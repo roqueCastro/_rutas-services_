@@ -10,7 +10,7 @@ if (isset($_GET['user'])) {
 
         $base->beginTransaction();
 
-        $sql    = "SELECT id_colegio as id, pass as pass FROM colegio WHERE userr = ?";
+        $sql    = "SELECT id_colegio as id, pass as pass, nombre_administrador as name FROM colegio WHERE userr = ?";
         $result = $base->prepare($sql);
         $result->bindParam(1, $usuario, PDO::PARAM_STR);
         $result->execute();

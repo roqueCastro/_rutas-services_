@@ -6,7 +6,7 @@ try {
 
     $base->beginTransaction();
 
-    $sql    = "DELETE FROM ruta WHERE id_ruta =  ?";
+    $sql    = "UPDATE ruta SET estado = 1 WHERE id_ruta = ? ";
     $result = $base->prepare($sql);
     $result->bindParam(1, $id, PDO::PARAM_STR);
 

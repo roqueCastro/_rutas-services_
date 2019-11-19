@@ -7,7 +7,7 @@ try {
 
     $base->beginTransaction();
 
-    $sql    = "SELECT * FROM conductor";
+    $sql    = "SELECT * FROM conductor where estado = 0";
     $result = $base->prepare($sql);
     $result->execute();
     //

@@ -6,7 +6,7 @@ try {
 
     $base->beginTransaction();
 
-    $sql    = "DELETE FROM conductor WHERE id_conductor =  ?";
+    $sql    = "UPDATE conductor SET estado = 1 WHERE id_conductor = ? ";
     $result = $base->prepare($sql);
     $result->bindParam(1, $id, PDO::PARAM_STR);
 
