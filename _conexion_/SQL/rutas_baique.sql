@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2019 a las 23:20:59
+-- Tiempo de generación: 04-12-2019 a las 16:51:53
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -43,7 +43,7 @@ CREATE TABLE `colegio` (
 --
 
 INSERT INTO `colegio` (`id_colegio`, `nombre_administrador`, `userr`, `pass`, `telefono`, `latitud`, `longitud`) VALUES
-(1, 'La Gaitana', 'gaitana', '1234Asd@', '3215569231', '1.967900', '-75.931293');
+(1, 'San Francisco', 'Admin', 'Admin1234', '3215569231', '0.522389', '-76.516710');
 
 -- --------------------------------------------------------
 
@@ -207,7 +207,8 @@ INSERT INTO `ruta` (`id_ruta`, `nombre_ruta`, `id_colegio`, `id_conductor`, `fec
 (10, 'La Gaitana - Camenzo', 1, 2, '2019-11-16 13:08:08', 1),
 (11, 'La Gaitana - yamboro', 1, 3, '2019-11-18 08:49:38', 0),
 (12, 'La Gaitana - pitalito', 1, 4, '2019-11-18 09:01:45', 0),
-(13, 'La Gaitana - Eden', 1, 5, '2019-11-18 11:22:41', 0);
+(13, 'La Gaitana - Eden', 1, 5, '2019-11-18 11:22:41', 0),
+(14, 'San Fransisco - Toronto', 1, 1, '2019-11-21 18:02:11', 0);
 
 -- --------------------------------------------------------
 
@@ -387,7 +388,7 @@ ALTER TABLE `resultadoruta`
 -- AUTO_INCREMENT de la tabla `ruta`
 --
 ALTER TABLE `ruta`
-  MODIFY `id_ruta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_ruta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `varada`

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $operacion = $_POST['Operacion'];
 //$operacion = "info_factura";
 
@@ -68,4 +70,15 @@ if ($operacion == "service") {
 
     // echo $name . "\n" . $user . "\n" . $pass . "\n" . $tele . "\n" . $lat . "\n" . $lng;
     // echo 'holaproceso';
+}
+if ($operacion == "out") {
+
+    session_destroy();
+    //header('Location:_ws_nn_code_.php');
+    echo "true";
+}
+if ($operacion == "init") {
+
+    $_SESSION['id'] = "12";
+    echo "true";
 }
