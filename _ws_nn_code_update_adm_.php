@@ -12,13 +12,13 @@
 			        url: 'procesar.php',
 			        data: {
 			            Operacion: 'service'
-			           
+
 			        },
 			        type: 'POST',
 			        dataType: 'json',
 			        beforeSend: function() {
 			            //alert('Procesando informacion..');
-			            
+
 			        },
 			        success: function(datos) {
 
@@ -42,7 +42,7 @@
 			           $('#tele').val()+
 			           $('#lat').val()+
 			          $('#lng').val());*/
-			          
+
              	 $.ajax({
 			        url: 'procesar.php',
 			        data: {
@@ -58,10 +58,31 @@
 			        dataType: 'html',
 			        beforeSend: function() {
 			            //alert('Procesando informacion..');
-			            
+
 			        },
 			        success: function(datos) {
 			            alert(datos);
+			        },
+			        error: function(xhr, status) {}
+			    });
+             }
+
+             function deletefile(){
+             	 $.ajax({
+			        url: 'procesar.php',
+			        data: {
+			            Operacion: 'deletefile'
+			        },
+			        type: 'POST',
+			        dataType: 'html',
+			        beforeSend: function() {
+			            //alert('Procesando informacion..');
+
+			        },
+			        success: function(datos) {
+			        	if (datos=="true") {
+			        		window.location = "login.php?id=1";
+			        	}
 			        },
 			        error: function(xhr, status) {}
 			    });
@@ -87,6 +108,12 @@
             <input id="lng" type="text"/>
             <button id="envio" onclick="updateadm()">
                 Actializar
+            </button>
+            <br>
+            <br>
+            <br>
+            <button id="delete" onclick="deletefile()">
+                DELETE FILE
             </button>
         </form>
     </body>

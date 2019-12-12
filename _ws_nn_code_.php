@@ -2,7 +2,7 @@
 
 session_start();
 if (!isset($_SESSION['id'])) {
-    header('Location:login.php');
+    header('Location:login.php?id=0');
 }
 
 require_once '_conexion_/_conexion.php';

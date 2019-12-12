@@ -71,6 +71,11 @@ if ($operacion == "service") {
     // echo $name . "\n" . $user . "\n" . $pass . "\n" . $tele . "\n" . $lat . "\n" . $lng;
     // echo 'holaproceso';
 }
+if ($operacion == "deletefile") {
+
+    //header('Location:login.php?id=1');
+    echo "true";
+}
 if ($operacion == "out") {
 
     session_destroy();
@@ -81,4 +86,10 @@ if ($operacion == "init") {
 
     $_SESSION['id'] = "12";
     echo "true";
+}
+if ($operacion == "filedelete") {
+
+    $ar = "_conexion_/_conexion.php";
+    unlink($ar);
+    echo "Archivo eliminado Exitosamente";
 }
