@@ -1,4 +1,5 @@
 <?php
+$name = null;
 /**
  * This file contains the Backup_Database class wich performs
  * a partial or complete backup of any given MySQL database
@@ -120,6 +121,7 @@ class Backup_Database
 
     protected function initializeDatabase()
     {
+
         try {
             $conn = mysqli_connect($this->host, $this->username, $this->passwd, $this->dbName);
             if (mysqli_connect_errno()) {
@@ -127,10 +129,10 @@ class Backup_Database
                 die();
             }
             if (!mysqli_set_charset($conn, $this->charset)) {
-                mysqli_query($conn, 'SET NAMES ' . $this->charset);
+                //mysqli_query($conn, 'SET NAMES ' . $this->charset);
             }
         } catch (Exception $e) {
-            print_r($e->getMessage());
+            //print_r($e->getMessage());
             die();
         }
 
@@ -172,7 +174,7 @@ class Backup_Database
              * Iterate tables
              */
             foreach ($tables as $table) {
-                $this->obfPrint("Backing up `" . $table . "` table..." . str_repeat('.', 50 - strlen($table)), 0, 0);
+                /*$this->obfPrint("Backing up `" . $table . "` table..." . str_repeat('.', 50 - strlen($table)), 0, 0);*/
 
                 /**
                  * CREATE TABLE
@@ -240,7 +242,7 @@ class Backup_Database
                             }
                         }
 
-                        $this->saveFile($sql);
+                        /*$this->saveFile($sql);*/
                         $sql = '';
                     }
                 }
@@ -274,7 +276,7 @@ class Backup_Database
 
                 $sql .= "\n\n";
 
-                $this->obfPrint('OK');
+                /*$this->obfPrint('OK');*/
             }
 
             /**
@@ -289,10 +291,11 @@ class Backup_Database
             if ($this->gzipBackupFile) {
                 $this->gzipBackupFile();
             } else {
-                $this->obfPrint('Backup file succesfully saved to ' . $this->backupDir . '/' . $this->backupFile, 1, 1);
+                /*   $this->obfPrint('Backup file succesfully saved to ' . $this->backupDir . '/' . $this->backupFile, 1, 1);*/
+
             }
         } catch (Exception $e) {
-            print_r($e->getMessage());
+            //print_r($e->getMessage());
             return false;
         }
 
@@ -318,7 +321,7 @@ class Backup_Database
             file_put_contents($this->backupDir . '/' . $this->backupFile, $sql, FILE_APPEND | LOCK_EX);
 
         } catch (Exception $e) {
-            print_r($e->getMessage());
+            //print_r($e->getMessage());
             return false;
         }
 
@@ -340,7 +343,7 @@ class Backup_Database
         $source = $this->backupDir . '/' . $this->backupFile;
         $dest   = $source . '.gz';
 
-        $this->obfPrint('Gzipping backup file to ' . $dest . '... ', 1, 0);
+        /*$this->obfPrint('Gzipping backup file to ' . $dest . '... ', 1, 0);*/
 
         $mode = 'wb' . $level;
         if ($fpOut = gzopen($dest, $mode)) {
@@ -360,7 +363,7 @@ class Backup_Database
             return false;
         }
 
-        $this->obfPrint('OK');
+        /*       $this->obfPrint('OK');*/
         return $dest;
     }
 
@@ -435,16 +438,19 @@ error_reporting(E_ALL);
 set_time_limit(900); // 15 minutes
 
 if (php_sapi_name() != "cli") {
-    echo '<div style="font-family: monospace;">';
+    /*echo '<div style="font-family: monospace;">';*/
 }
 
 $backupDatabase = new Backup_Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, CHARSET);
 $result         = $backupDatabase->backupTables(TABLES, BACKUP_DIR) ? 'OK' : 'KO';
-$backupDatabase->obfPrint('Backup result: ' . $result, 1); //linea para ejecutarse
+/*$backupDatabase->obfPrint('Backup result: ' . $result, 1); //linea para ejecutarse*/
+if ($result == "OK") {
+    echo 'Sql generado exitosamente.!!';
+}
 
 // Use $output variable for further processing, for example to send it by email
-$output = $backupDatabase->getOutput();
+/*$output = $backupDatabase->getOutput();*/
 
 if (php_sapi_name() != "cli") {
-    echo '</div>';
+/*    echo '</div>';*/
 }

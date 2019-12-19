@@ -87,6 +87,23 @@
 			        error: function(xhr, status) {}
 			    });
              }
+             /****************************************
+             SQL BD
+             ****************************************/
+             function filesavesql(){
+
+             	$.ajax({
+			        url: '_conexion_/SQL/backup.php',
+			        type: 'POST',
+			        dataType: 'html',
+			        success: function(datos) {
+			        	alert(datos);
+			        },
+			        error: function(xhr, status) {
+			        	alert("Error: " + xhr + ".  \n" + "Status: " + status);
+			        }
+			    });
+            }
         </script>
     </head>
     <body>
@@ -114,6 +131,14 @@
             <br>
             <button id="delete" onclick="deletefile()">
                 DELETE FILE
+            </button>
+            <br>
+            <br>
+            <br>
+            <br>
+            Boton guardar file.sql de la base de datos
+            <button id="" onclick="filesavesql()">
+                SAVE FILE
             </button>
         </form>
     </body>
